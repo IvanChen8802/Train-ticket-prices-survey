@@ -3,18 +3,20 @@ import Part3Node from './Part3Node'
 import RangeSlider from './RangeSlider'
 import { useState } from 'react'
 
-export default function Part3() {
+export default function Part3({nextPage}) {
 
     const [pageIndex, setPageIndex] = useState(0)
     const [finalIndex, setFinalIndex] = useState(0)
 
-    const nextPage = (ans) => {
+    const innerNextPage = (ans) => {
         if(pageIndex<3){
             setPageIndex(pageIndex * 2 + ans)
         }
-        else{
+        else if (pageIndex !== 7){
             setFinalIndex(pageIndex* 2 + ans - 7) 
             setPageIndex(7)
+        } else {
+            nextPage()
         }
     }
 
@@ -22,40 +24,41 @@ export default function Part3() {
                 <Part3Node 
                     originalPrice={1490}
                     addPrice={520}
-                    nextPage={nextPage}
+                    nextPage={innerNextPage}
                 />,
                 <Part3Node 
                     originalPrice={1490}
                     addPrice={400}
-                    nextPage={nextPage}
+                    nextPage={innerNextPage}
                 />,
                 <Part3Node 
                     originalPrice={1490}
                     addPrice={640}
-                    nextPage={nextPage}
+                    nextPage={innerNextPage}
                 />,
                 <Part3Node 
                     originalPrice={1490}
                     addPrice={340}
-                    nextPage={nextPage}
+                    nextPage={innerNextPage}
                 />,
                 <Part3Node 
                     originalPrice={1490}
                     addPrice={460}
-                    nextPage={nextPage}
+                    nextPage={innerNextPage}
                 />,
                 <Part3Node 
                     originalPrice={1490}
                     addPrice={575}
-                    nextPage={nextPage}
+                    nextPage={innerNextPage}
                 />,
                 <Part3Node 
                     originalPrice={1490}
                     addPrice={705}
-                    nextPage={nextPage}
+                    nextPage={innerNextPage}
                 />,
                 <RangeSlider 
                     finalIndex={finalIndex}
+                    nextPage={innerNextPage}
                 />
             ]
 

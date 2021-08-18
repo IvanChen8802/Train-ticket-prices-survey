@@ -3,11 +3,9 @@ import ReactDOM from 'react-dom';
 import Main from './Components/Main';
 import './index.css';
 
-// const counters = Array.from({length: 14}, (_,index) => index)
-
 ReactDOM.render(
-    <>
-        {<Main />}
-    </>,
+    <React.Fragment>
+        <Main />
+    </React.Fragment>,
     document.getElementById('root')
 );

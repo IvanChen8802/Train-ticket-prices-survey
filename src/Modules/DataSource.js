@@ -14,6 +14,10 @@ class DataSource {
         return this.data
     }
 
+    clear() {
+        this.data = {}
+    }
+
     send() {
         // pur all data to database through backend api
     }

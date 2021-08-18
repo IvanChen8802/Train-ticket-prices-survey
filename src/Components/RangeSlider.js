@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import ds from '../Modules/DataSource'
 
-export default function RangeSlider({finalIndex}){
+export default function RangeSlider({finalIndex, nextPage}){
     
     const finalPriceRange = [
         [0+1490,339+1490],
@@ -23,6 +23,8 @@ export default function RangeSlider({finalIndex}){
     const handleOnClick = () => {
         ds.set({final: val})
         console.log(ds.get())
+        ds.clear()
+        nextPage()
     }
 
     return (        

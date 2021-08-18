@@ -7,7 +7,8 @@ export default function Main() {
     const [pageIndex, setPageIndex] = useState(0)
 
     const nextPage = () => {
-        setPageIndex(pageIndex + 1)
+        const nextIndex = (pageIndex+1) % pages.length
+        setPageIndex(nextIndex)
     }
 
     const pages = [
