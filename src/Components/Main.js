@@ -1,25 +1,25 @@
 import React from 'react'
 import Part3 from './Part3'
+import RangeSlider from './RangeSlider'
 import { useState } from 'react'
 
 
 export default function Main() {
-    const [data, setData] = useState({
-        originalPrice: 1490,
-        addPrice: 520,
-        prices: {
-            520: [400 ,640],
-            400: [340, 460],
-            640: [575, 705]
-        },
-        yn: []
-    })
 
     const [pageIndex, setPageIndex] = useState(0)
+    const [finalIndex, setFinalIndex] = useState(0)
 
     const nextPage = (ans) => {
-        setPageIndex(pageIndex * 2 + ans)
+        if(pageIndex<3){
+            setPageIndex(pageIndex * 2 + ans)
+        }
+        else{
+            setFinalIndex(pageIndex* 2 + ans - 7) 
+            setPageIndex(7)
+        }
+        
     }
+
 
     const pages = [
                 <Part3 
@@ -57,6 +57,9 @@ export default function Main() {
                     addPrice={705}
                     nextPage={nextPage}
                 />,
+                <RangeSlider 
+                    finalIndex={finalIndex}
+                />
             ]
 
     return (
