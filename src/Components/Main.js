@@ -1,6 +1,7 @@
 import React from 'react'
-import Part3 from './Part3'
+import Intro from './Intro'
 import Part1 from './Part1'
+import Part3 from './Part3'
 import { useState } from 'react'
 
 export default function Main() {
@@ -12,6 +13,9 @@ export default function Main() {
     }
 
     const pages = [
+        <Intro 
+            nextPage={nextPage}
+        />,
         <Part1 
             nextPage={nextPage}
         />,
