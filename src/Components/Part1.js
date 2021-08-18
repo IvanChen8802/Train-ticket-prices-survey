@@ -1,5 +1,4 @@
 import React from 'react'
-import  '../StyleSheets/App.css';
 import Radio from "./Radio";
 import Checkbox from "./Checkbox";
 
@@ -10,7 +9,7 @@ export default function Part1({nextPage}){
     };
     const Q2 = {
         question: "2.	請問您一個月內搭乘高鐵的次數為(單程次數)：",
-        options: ["1 ~ 3", "4 ~ 6", "7 ~ 10", "11次(含)以上"]
+        options: ["1~3", "4~6", "7~10", "11次(含)以上"]
     };
     const Q3 = {
         question: "3.	此次搭乘的艙等為：",
@@ -28,9 +27,9 @@ export default function Part1({nextPage}){
     return (
         <div className="App">
           <div className="App-header">
-            <div className="rectangle">
+            <div className="form-rectangle">
               <h2>第一部分：旅次特性</h2>
-              <div className="content">
+              <div className="form-content">
                 <div className="questions">{Q1.question}</div>
                 <Radio options={Q1.options}/>
                 <div className="questions">{Q2.question}</div>
@@ -46,7 +45,7 @@ export default function Part1({nextPage}){
               </div>
             </div>
             <div>
-              <button class="button" onClick={nextPage}>下一頁</button>
+              <button className="button" onClick={nextPage}>下一頁</button>
             </div>
           </div>
         </div>

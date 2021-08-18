@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import '../StyleSheets/Radio.css';
 
 export default class Radio extends Component {
   constructor(props) {
@@ -33,18 +32,18 @@ export default class Radio extends Component {
 
   handleOthers (option) {
     const normal = 
-      <label class="radio-container">{option}
+      <label className="radio-container" key = {option.toString()}>{option}
         <input
         type = "radio"
         value = {option}
         onChange = {this.onChangeAnswer}
         checked = {this.state.answer === option}
         />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
       </label>
 
     const others = 
-      <label class="radio-container">{option}
+      <label className="radio-container" key = {option.toString()}>{option}
         <input
         type = "radio"
         value = {option}
@@ -52,7 +51,7 @@ export default class Radio extends Component {
         checked = {this.state.answer === option}
         />
         <input id="text-input" type="text" disabled={this.state.textDisabled} value={this.state.text} onChange={this.onChangeText} />
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
       </label>
 
     if (option === "其他") {

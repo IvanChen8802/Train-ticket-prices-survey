@@ -1,5 +1,4 @@
 import React from 'react'
-import  '../StyleSheets/App.css';
 
 export default function Intro({nextPage}) {
     return (
@@ -16,7 +15,7 @@ export default function Intro({nextPage}) {
             </div>
           </div>
           <div>
-            <button class="button" onClick={nextPage}>下一頁</button>
+            <button className="button" onClick={nextPage}>下一頁</button>
           </div>
         </div>
       </div>
