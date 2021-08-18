@@ -25,28 +25,26 @@ export default function Part1({nextPage}){
     }
 
     return (
-        <div className="App">
-          <div className="App-header">
-            <div className="form-rectangle">
-              <h2>第一部分：旅次特性</h2>
-              <div className="form-content">
-                <div className="questions">{Q1.question}</div>
-                <Radio options={Q1.options}/>
-                <div className="questions">{Q2.question}</div>
-                <Radio options={Q2.options}/>
-                <div className="questions">{Q3.question}</div>
-                <Radio options={Q3.options}/>
-                <div className="questions">{Q4.question}</div>
-                <Checkbox options={Q4.options}/>
-                <div className="questions">{Q5.question}</div>
-                <Radio options={Q5.options}/>
-                <div>
-                </div>
+        <div className="App-container">
+          <div className="form-rectangle">
+            <h2>第一部分：旅次特性</h2>
+            <div className="form-content">
+              <div className="questions">{Q1.question}</div>
+              <Radio options={Q1.options}/>
+              <div className="questions">{Q2.question}</div>
+              <Radio options={Q2.options}/>
+              <div className="questions">{Q3.question}</div>
+              <Radio options={Q3.options}/>
+              <div className="questions">{Q4.question}</div>
+              <Checkbox options={Q4.options}/>
+              <div className="questions">{Q5.question}</div>
+              <Radio options={Q5.options}/>
+              <div>
               </div>
             </div>
-            <div>
-              <button className="button" onClick={nextPage}>下一頁</button>
-            </div>
+          </div>
+          <div>
+            <button className="button" onClick={nextPage}>下一頁</button>
           </div>
         </div>
       );
