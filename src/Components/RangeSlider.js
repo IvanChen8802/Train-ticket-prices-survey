@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import ds from '../Modules/DataSource'
 
 export default function RangeSlider({finalIndex}){
     
@@ -19,16 +20,26 @@ export default function RangeSlider({finalIndex}){
         setVal(parseInt(e.target.value,10))
     }
        
+    const handleOnClick = () => {
+        ds.set({final: val})
+        console.log(ds.get())
+    }
+
     return (        
         <div className="container">
-                {/** comment */}
                 <div className="header">第三部分：詢價金額</div>
-                <div className="title">您的選擇區間為:{finalPriceRange[finalIndex][0]}~{finalPriceRange[finalIndex][1]}<br></br>請選擇您認為合理的金額</div>
-                <div class="slidecontainer">
-                <input type="range" min={finalPriceRange[finalIndex][0]} max={finalPriceRange[finalIndex][1]} value={val} onChange={updateVal} class="slider" id="myRange"/>
-                <div>{val}</div>
-                </div> 
-                <div className="sendbutton">完成送出</div>                
+                <div className="body">
+                    <div className="title">
+                        您的選擇區間為:{finalPriceRange[finalIndex][0]}~{finalPriceRange[finalIndex][1]}<br></br>請選擇您認為合理的金額
+                    </div>
+                    <input type="range" min={finalPriceRange[finalIndex][0]} max={finalPriceRange[finalIndex][1]} value={val} onChange={updateVal} className="slider" id="myRange"/>
+                    <div>
+                        {val}
+                    </div>
+                </div>
+                <div className="footer">
+                    <div className="button" onClick={handleOnClick}>完成送出</div>                
+                </div>
         </div>
         )
 }
