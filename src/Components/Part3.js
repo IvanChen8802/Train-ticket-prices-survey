@@ -3,70 +3,43 @@ import Part3Node from './Part3Node'
 import RangeSlider from './RangeSlider'
 
 export default function Part3({nextPage}) {
+    const originalPrice = 1490
+    const prices = [520, 400, 640, 340, 460, 575, 705]
 
-    const [pageIndex, setPageIndex] = useState(0)
-    const [finalIndex, setFinalIndex] = useState(0)
+    const [priceIndex, setPriceIndex] = useState(0)
+    const [page, setPage] = useState('Part3Node')
+    const [maxVal, setMaxVal] = useState(Math.max(...prices) + 1000)
+    const [minVal, setMinVal] = useState(0)
 
     const innerNextPage = (ans) => {
-        let nextPageIndex = 0
-        let nextFinalIndex = 0
+        let nextPriceIndex = 0
         
-        if(pageIndex < 3){
-            nextPageIndex = pageIndex * 2 + ans
-        } else if (pageIndex !== 7){
-            nextFinalIndex = pageIndex * 2 + ans - 7
-            nextPageIndex = 7
+        if(ans === 1) {
+            setMaxVal(prices[priceIndex])
         } else {
-            nextPage()
+            setMinVal(prices[priceIndex])
         }
         
-        setPageIndex(nextPageIndex)
-        setFinalIndex(nextFinalIndex)
+        if(priceIndex < 3){
+            nextPriceIndex = priceIndex * 2 + ans
+        } else {
+            setPage('RangeSlider')
+        }
+        
+        setPriceIndex(nextPriceIndex)
     }
 
-    const pages = [
-                <Part3Node 
-                    originalPrice={1490}
-                    addPrice={520}
-                    nextPage={innerNextPage}
-                />,
-                <Part3Node 
-                    originalPrice={1490}
-                    addPrice={400}
-                    nextPage={innerNextPage}
-                />,
-                <Part3Node 
-                    originalPrice={1490}
-                    addPrice={640}
-                    nextPage={innerNextPage}
-                />,
-                <Part3Node 
-                    originalPrice={1490}
-                    addPrice={340}
-                    nextPage={innerNextPage}
-                />,
-                <Part3Node 
-                    originalPrice={1490}
-                    addPrice={460}
-                    nextPage={innerNextPage}
-                />,
-                <Part3Node 
-                    originalPrice={1490}
-                    addPrice={575}
-                    nextPage={innerNextPage}
-                />,
-                <Part3Node 
-                    originalPrice={1490}
-                    addPrice={705}
-                    nextPage={innerNextPage}
-                />,
-                <RangeSlider 
-                    finalIndex={finalIndex}
-                    nextPage={innerNextPage}
-                />
-            ]
-
     return (
-        pages[pageIndex]
+        page === 'Part3Node' ?
+        <Part3Node 
+            originalPrice={originalPrice}
+            addPrice={prices[priceIndex]}
+            nextPage={innerNextPage}
+        /> :
+        <RangeSlider 
+            maxVal={originalPrice + maxVal - 1}
+            minVal={originalPrice + minVal}
+            nextPage={nextPage}
+        />
     )
 }
