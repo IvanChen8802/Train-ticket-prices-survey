@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState }  from 'react'
 import Part3Node from './Part3Node'
 import RangeSlider from './RangeSlider'
-import { useState } from 'react'
 
 export default function Part3({nextPage}) {
 
@@ -9,15 +8,20 @@ export default function Part3({nextPage}) {
     const [finalIndex, setFinalIndex] = useState(0)
 
     const innerNextPage = (ans) => {
-        if(pageIndex<3){
-            setPageIndex(pageIndex * 2 + ans)
-        }
-        else if (pageIndex !== 7){
-            setFinalIndex(pageIndex* 2 + ans - 7) 
-            setPageIndex(7)
+        let nextPageIndex = 0
+        let nextFinalIndex = 0
+        
+        if(pageIndex < 3){
+            nextPageIndex = pageIndex * 2 + ans
+        } else if (pageIndex !== 7){
+            nextFinalIndex = pageIndex * 2 + ans - 7
+            nextPageIndex = 7
         } else {
             nextPage()
         }
+        
+        setPageIndex(nextPageIndex)
+        setFinalIndex(nextFinalIndex)
     }
 
     const pages = [

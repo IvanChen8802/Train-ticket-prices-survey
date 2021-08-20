@@ -15,7 +15,7 @@ export default function RangeSlider({finalIndex, nextPage}){
         [705+1490,1000+1490]
     ]
     
-    const [val,setVal]=useState(parseInt((finalPriceRange[finalIndex][0] + finalPriceRange[finalIndex][1]) / 2 , 10))
+    const [val,setVal]=useState(parseInt(finalPriceRange[finalIndex][0], 10))
     const updateVal = e => {
         setVal(parseInt(e.target.value,10))
     }
@@ -32,15 +32,16 @@ export default function RangeSlider({finalIndex, nextPage}){
                 <div className="header">第三部分：詢價金額</div>
                 <div className="body">
                     <div className="title">
-                        您的選擇區間為:{finalPriceRange[finalIndex][0]}~{finalPriceRange[finalIndex][1]}<br></br>請選擇您認為合理的金額
+                        您的選擇區間為:{finalPriceRange[finalIndex][0]}~{finalPriceRange[finalIndex][1]}<br></br>
                     </div>
-                    <input type="range" min={finalPriceRange[finalIndex][0]} max={finalPriceRange[finalIndex][1]} value={val} onChange={updateVal} className="slider" id="myRange"/>
-                    <div>
+                    <div className="content">
+                        請選擇您認為合理的金額
+                        <input type="range" min={finalPriceRange[finalIndex][0]} max={finalPriceRange[finalIndex][1]} value={val} onChange={updateVal} className="slider" id="myRange"/>
                         {val}
                     </div>
                 </div>
                 <div className="footer">
-                    <div className="button" onClick={handleOnClick}>完成送出</div>                
+                    <div className="button" onClick={handleOnClick}>完成送出</div>
                 </div>
         </div>
         )
